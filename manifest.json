@@ -3,7 +3,7 @@
   "name": "SQL Visual Builder - Moda Circular",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/2906/2906206.png",
+      "src": "./archivo-sql.png",
       "type": "image/png",
       "sizes": "512x512"
     }
