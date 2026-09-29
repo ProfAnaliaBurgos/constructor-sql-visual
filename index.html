@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL Constructor - Moda Circular</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+  <header class="app-header">
+    <h1>🛍️ SQL Visual Builder — <span>Moda Circular</span></h1>
+  </header>
+
+  <div class="main-container">
+    
+    <!-- BARRA LATERAL: ESTRUCTURA EXACTA SEGÚN DIAGRAMA -->
+    <aside class="sidebar">
+      <h2>📁 Base de Datos</h2>
+      <p class="subtitle">Haz clic para agregar tablas o campos</p>
+
+      <div class="accordion-tables">
+        
+        <!-- Tabla: categorias -->
+        <div class="table-group">
+          <button class="btn-table" onclick="agregarToken('categorias')">🏷️ categorias</button>
+          <div class="columns-group">
+            <button class="btn-col" onclick="agregarToken('categorias.id_categoria')">id_categoria</button>
+            <button class="btn-col" onclick="agregarToken('categorias.nombre_categoria')">nombre_categoria</button>
+            <button class="btn-col" onclick="agregarToken('categorias.talle_sistema')">talle_sistema</button>
+          </div>
+        </div>
+
+        <!-- Tabla: personas -->
+        <div class="table-group">
+          <button class="btn-table" onclick="agregarToken('personas')">👥 personas</button>
+          <div class="columns-group">
+            <button class="btn-col" onclick="agregarToken('personas.id_persona')">id_persona</button>
+            <button class="btn-col" onclick="agregarToken('personas.nombre')">nombre</button>
+            <button class="btn-col" onclick="agregarToken('personas.parentesco')">parentesco</button>
+            <button class="btn-col" onclick="agregarToken('personas.rol')">rol</button>
+          </div>
+        </div>
+
+        <!-- Tabla: prendas -->
+        <div class="table-group">
+          <button class="btn-table" onclick="agregarToken('prendas')">👗 prendas</button>
+          <div class="columns-group">
+            <button class="btn-col" onclick="agregarToken('prendas.id_prenda')">id_prenda</button>
+            <button class="btn-col" onclick="agregarToken('prendas.id_categoria')">id_categoria</button>
+            <button class="btn-col" onclick="agregarToken('prendas.descripcion')">descripcion</button>
+            <button class="btn-col" onclick="agregarToken('prendas.marca')">marca</button>
+            <button class="btn-col" onclick="agregarToken('prendas.color_primario')">color_primario</button>
+          </div>
+        </div>
+
+        <!-- Tabla: inventario -->
+        <div class="table-group">
+          <button class="btn-table" onclick="agregarToken('inventario')">📦 inventario</button>
+          <div class="columns-group">
+            <button class="btn-col" onclick="agregarToken('inventario.id_inventario')">id_inventario</button>
+            <button class="btn-col" onclick="agregarToken('inventario.id_prenda')">id_prenda</button>
+            <button class="btn-col" onclick="agregarToken('inventario.id_dueno')">id_dueno</button>
+            <button class="btn-col" onclick="agregarToken('inventario.descripcion_articulo')">descripcion_articulo</button>
+            <button class="btn-col" onclick="agregarToken('inventario.talle_especifico')">talle_especifico</button>
+            <button class="btn-col" onclick="agregarToken('inventario.estado_conservacion')">estado_conservacion</button>
+            <button class="btn-col" onclick="agregarToken('inventario.precio_costo')">precio_costo</button>
+            <button class="btn-col" onclick="agregarToken('inventario.precio_venta_sugerido')">precio_venta_sugerido</button>
+            <button class="btn-col" onclick="agregarToken('inventario.estado_actual')">estado_actual</button>
+          </div>
+        </div>
+
+        <!-- Tabla: ventas -->
+        <div class="table-group">
+          <button class="btn-table" onclick="agregarToken('ventas')">🧾 ventas</button>
+          <div class="columns-group">
+            <button class="btn-col" onclick="agregarToken('ventas.id_venta')">id_venta</button>
+            <button class="btn-col" onclick="agregarToken('ventas.id_cliente')">id_cliente</button>
+            <button class="btn-col" onclick="agregarToken('ventas.fecha_venta')">fecha_venta</button>
+            <button class="btn-col" onclick="agregarToken('ventas.monto_total')">monto_total</button>
+            <button class="btn-col" onclick="agregarToken('ventas.observacion')">observacion</button>
+          </div>
+        </div>
+
+        <!-- Tabla: detalle_ventas -->
+        <div class="table-group">
+          <button class="btn-table" onclick="agregarToken('detalle_ventas')">📝 detalle_ventas</button>
+          <div class="columns-group">
+            <button class="btn-col" onclick="agregarToken('detalle_ventas.id_detalle')">id_detalle</button>
+            <button class="btn-col" onclick="agregarToken('detalle_ventas.id_venta')">id_venta</button>
+            <button class="btn-col" onclick="agregarToken('detalle_ventas.id_inventario')">id_inventario</button>
+            <button class="btn-col" onclick="agregarToken('detalle_ventas.descripcion_item')">descripcion_item</button>
+            <button class="btn-col" onclick="agregarToken('detalle_ventas.precio_real_cobrado')">precio_real_cobrado</button>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL DE TRABAJO -->
+    <main class="content">
+      
+      <!-- BOTONERA SQL -->
+      <section class="toolbar">
+        <div class="tool-group">
+          <span class="group-title">Cláusulas</span>
+          <button class="btn-kw" onclick="agregarToken('SELECT')">SELECT</button>
+          <button class="btn-kw" onclick="agregarToken('*')">*</button>
+          <button class="btn-kw" onclick="agregarToken('FROM')">FROM</button>
+          <button class="btn-kw" onclick="agregarToken('AS')">AS</button>
+          <button class="btn-kw" onclick="agregarToken('INNER JOIN')">INNER JOIN</button>
+          <button class="btn-kw" onclick="agregarToken('ON')">ON</button>
+          <button class="btn-kw" onclick="agregarToken('WHERE')">WHERE</button>
+          <button class="btn-kw" onclick="agregarToken('BETWEEN')">BETWEEN</button>
+          <button class="btn-kw" onclick="agregarToken('IN')">IN</button>
+               
+          <button class="btn-kw" onclick="agregarToken('GROUP BY')">GROUP BY</button>
+          <button class="btn-kw" onclick="agregarToken('HAVING')">HAVING</button>
+          <button class="btn-kw" onclick="agregarToken('ORDER BY')">ORDER BY</button>
+          <button class="btn-kw" onclick="agregarToken('ASC')">ASC</button>
+          <button class="btn-kw" onclick="agregarToken('DESC')">DESC</button>
+       
+       <!-- En index.html, agregar dentro de la sección .toolbar -->
+<div class="tool-group">
+  <span class="group-title">Valores / Textos Manuales</span>
+  <input type="text" id="input-valor" placeholder="Ej: 'Cliente', 10, 'Rojo'..." class="input-custom">
+  <button class="btn-kw" onclick="agregarValorManual()">➕ Agregar Valor</button>
+</div>
+        </div>
+
+        <div class="tool-group">
+          <span class="group-title">Funciones y Operadores</span>
+          <button class="btn-fn" onclick="agregarToken('COUNT(')">COUNT()</button>
+          <button class="btn-fn" onclick="agregarToken('SUM(')">SUM()</button>
+          <button class="btn-fn" onclick="agregarToken('AVG(')">AVG()</button>
+          <button class="btn-fn" onclick="agregarToken('MAX(')">MAX()</button>
+          <button class="btn-fn" onclick="agregarToken('MIN(')">MIN()</button>
+          <button class="btn-op" onclick="agregarToken(',')">,</button>
+          <button class="btn-op" onclick="agregarToken('!=')">!=</button>
+          <button class="btn-op" onclick="agregarToken('=')">=</button>
+          <button class="btn-op" onclick="agregarToken('>')">&gt;</button>
+          <button class="btn-op" onclick="agregarToken('<')">&lt;</button>
+          <button class="btn-op" onclick="agregarToken('LIKE')">LIKE</button>
+          <button class="btn-op" onclick="agregarToken('AND')">AND</button>
+          <button class="btn-op" onclick="agregarToken('OR')">OR</button>
+          <button class="btn-op" onclick="agregarToken(')')">)</button>
+        </div>
+      </section>
+
+      <!-- VISOR DE LA CONSULTA -->
+      <section class="query-builder">
+        <div class="query-header">
+          <h3>Consulta SQL Construida:</h3>
+          <div class="actions">
+            <button class="btn-danger" onclick="borrarUltimo()">⬅️ Borrar último</button>
+            <button class="btn-secondary" onclick="limpiarTodo()">🧹 Limpiar todo</button>
+          </div>
+        </div>
+        
+        <div id="visor-sql" class="sql-display">
+          <span class="placeholder">Haz clic en los botones para armar la consulta...</span>
+        </div>
+
+        <button class="btn-execute" onclick="ejecutarConsulta()">🚀 ¡Ejecutar Consulta!</button>
+      </section>
+
+      <!-- TABLA DE RESULTADOS -->
+      <section class="results-section">
+        <h3>Resultado de la Base de Datos</h3>
+        <div id="contenedor-resultado" class="table-responsive">
+          <p class="empty-msg">Ejecuta una consulta para ver los registros aquí.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+<!-- Librería cliente de Supabase desde CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+  
+
+</body>
+</html>
